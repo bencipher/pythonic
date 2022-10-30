@@ -19,8 +19,10 @@ class VehicleInfo:
     # you can only lease this car if the catalogue price is not more than 70% of
     # your year income; year_income should be >= 0
     def can_lease(self, year_income: int) -> bool:
-        # to do
-        pass
+        if year_income < 0:
+            raise ValueError(f'Yearly income cannot be negative')
+        return year_income >= self.catalogue_price * 0.7
+
 
 # create a vehicle info object
 v = VehicleInfo("BMW", False, 10000)
